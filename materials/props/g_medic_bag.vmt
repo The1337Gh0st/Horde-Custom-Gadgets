@@ -1,0 +1,23 @@
+"VertexLitGeneric" // (Shader) VertexLitGeneric is a model shader, as named, the model will be lit "per vertex" either dynamically in game, or baked into the model when using a static prop in Hammer. 
+{
+// Any parameters beginning with "//" will be ignored by the material. This is useful for deprecating something you may want to use later on, or revert back to, as well as for making comments like this one for organization and learning.
+
+// Base Parameters
+
+	"$basetexture" 			"props/g_medic_bag_diffuse"		// (Texture) Determines which texture is used for your meshes surface. 
+	"$model" 				"1"				// (Boolean) Neccessary for some parameters to function, and tells Hammer not to display this for map brush textures.
+
+// Phong Shading, provides realistic diffuse reflections, but requires a bumpmap with an alpha channel controlling reflectivity. Remove this section if you do not have a bumpmap.
+
+	"$phong"				"1"				// (Boolean) Simply enables Phong shading.
+	"$phongboost"			"1"				// (Float) Controls the overall brightness of the phong reflections. 
+	"$phongexponent"			"3"				// (Float) Controls the "tightness" of the phong reflections, higher values providing smaller, but harsher edges (Smoother surface). Most cases value is negligible.
+	"$phongfresnelranges"		"[0 .5 1]"				// (RGB Matrix) Controls the amount of fresnel Phong reflectance uses. Numbers in slot 1 multiply reflectance when facing a polygon normal, slot 2 multiply reflectance when facing a polygon from the side (90 degrees), and slot 3 multiply reflectance at the midpoint between slot 1 and 2.		
+
+// Rimlighting, provides a backlighting effect to a model which shows more of the models form, requires $phong to be enabled. Not neccessarily realistic in most cases, but can be visually appealing, and is best suited for creatures, metallic objects, and objects of interest.
+
+	"$rimlight"			"1"				// (Boolean) Simply enabled Rimlighting.
+	"$rimlightexponent"       		"1"				// (Float) Controls the "tightness" of the rimlight, higher values providing smaller, but harsher edges (Smoother surface).
+	"$rimlightboost"          		"1"				// (Float) Controls the overall brightness of the rimlight. Higher values more useful for metallic items. 
+
+}
