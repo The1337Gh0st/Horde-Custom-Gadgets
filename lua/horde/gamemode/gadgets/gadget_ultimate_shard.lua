@@ -1,5 +1,5 @@
 GADGET.PrintName = "Ultimate Shard"
-GADGET.Description = "10% increase in speed, damage, and global resist for 30 seconds. Additionally, heals for 20 health and removes all debuffs."
+GADGET.Description = "10% increase in speed, damage, and global resist for 30 seconds. \nAdditionally, heals for 20 health and removes all debuffs."
 GADGET.Icon = "items/gadgets/damage_shard.png"
 GADGET.Droppable = true
 GADGET.Once = true
