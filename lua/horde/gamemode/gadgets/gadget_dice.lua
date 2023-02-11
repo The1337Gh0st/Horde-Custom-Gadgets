@@ -2,9 +2,9 @@ GADGET.PrintName = "Dice"
 GADGET.Description =
 [[Randomly activates one of the following gadgets:
  Agility Shard, Resistance Shard, Damage Shard,
- Elixir, Matriarch Womb, Turret Pack,
+ Elixir, Medic Bag, Turret Pack,
  Idol of Greed, Optical Camoflauge, Portable Battery,
- Instant Refill, Berserker Armor, or Ultimate Shard.
+ Ammo Bag, Berserker Armor, or Ultimate Shard.
  All temporary effects have been increased to 30 seconds.]]
 GADGET.Icon = "items/gadgets/unstable_injection.png"
 GADGET.Duration = 0
