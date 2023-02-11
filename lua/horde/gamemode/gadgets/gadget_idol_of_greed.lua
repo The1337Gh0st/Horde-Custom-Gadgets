@@ -1,7 +1,7 @@
 GADGET.PrintName = "Idol of Greed"
 GADGET.Description = "Spend $500 cash to activate. \nWhile active, all of your kills will drop cash equal to 50 + 50% of the enemy's kill reward."
 GADGET.Icon = "items/gadgets/berserk_armor.png"
-GADGET.Duration = 10
+GADGET.Duration = 15
 GADGET.Cooldown = 30
 GADGET.Active = true
 GADGET.Params = {
@@ -21,10 +21,14 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
     ply:Horde_SyncEconomy()
 	sound.Play("satan_laugh.wav", ply:GetPos())
     ply.Horde_GreedIdol = true
-    ply:ScreenFade(SCREENFADE.IN, Color(253, 248, 50, 32), 0.1, 10)
+  --  ply:ScreenFade(SCREENFADE.IN, Color(253, 248, 50, 32), 0.1, 10)
+  ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 1)
 	ply:Horde_SetGadgetCooldown(30)
-    timer.Simple(10, function()
-        if ply:IsValid() then ply.Horde_GreedIdol = nil end
+    timer.Simple(15, function()
+        if ply:IsValid() then 
+		ply.Horde_GreedIdol = nil 
+		ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 0)
+		end
     end)
 end
 

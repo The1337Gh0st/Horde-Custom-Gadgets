@@ -67,30 +67,20 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
     end
 	
 	elseif p == 5 then
-	ply:ChatPrint( "Rolled: Matriarch Womb" )
-	 local ent = ents.Create("npc_vj_horde_headcrab")
-    ent:SetPos(ply:GetPos() + ply:GetForward() * 50 + Vector(0,0,1) * 10)
-    ent:Spawn()
+	ply:ChatPrint( "Rolled: Medic Bag" )
+	
+	local ent = ents.Create("horde_medic_bag")
+    local pos = ply:GetPos()
+    local dir = (ply:GetEyeTrace().HitPos - pos)
+    dir:Normalize()
+    local drop_pos = pos + dir * 50
+    drop_pos.z = pos.z + 15
+    ent:SetPos(drop_pos)
+    ent:SetAngles(Angle(0, ply:GetAngles().y, 0))
+    ply:Horde_AddDropEntity(ent:GetClass(), ent)
     ent:SetNWEntity("HordeOwner", ply)
-    local id = ent:GetCreationID()
-    ent:SetCollisionGroup(COLLISION_GROUP_WORLD)
-    timer.Create("Horde_MinionCollision" .. id, 1, 0, function ()
-        if not ent:IsValid() then timer.Remove("Horde_MinionCollision" .. id) return end
-        ent:SetCollisionGroup(COLLISION_GROUP_WORLD)
-    end)
-    ply:Horde_SetMinionCount(ply:Horde_GetMinionCount() + 1)
-    ent:CallOnRemove("Horde_EntityRemoved", function()
-        if ent:IsValid() and ply:IsValid() then
-            timer.Remove("Horde_MinionCollision" .. ent:GetCreationID())
-            ent:GetNWEntity("HordeOwner"):Horde_RemoveDropEntity(ent:GetClass(), ent:GetCreationID(), true)
-            ent:GetNWEntity("HordeOwner"):Horde_SyncEconomy()
-            ply:Horde_SetMinionCount(ply:Horde_GetMinionCount() - 1)
-        end
-    end)
-
-    timer.Simple(30, function ()
-        if ent:IsValid() then ent:Remove() end
-    end)
+    ent:Spawn()
+	
 	
 	elseif p == 6 then
 	ply:ChatPrint( "Rolled: Turret Pack" )
@@ -150,9 +140,13 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
 	ply:ChatPrint( "Rolled: Idol of Greed" )
 	sound.Play("satan_laugh.wav", ply:GetPos())
     ply.Horde_GreedIdol = true
-    ply:ScreenFade(SCREENFADE.IN, Color(253, 248, 50, 32), 0.1, 30)
+  --  ply:ScreenFade(SCREENFADE.IN, Color(253, 248, 50, 32), 0.1, 30)
+  ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 1)
     timer.Simple(30, function()
-        if ply:IsValid() then ply.Horde_GreedIdol = nil end
+        if ply:IsValid() then 
+		ply.Horde_GreedIdol = nil 
+		ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 0)
+		end
     end)
 	
 	
@@ -176,29 +170,21 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
 	
 	elseif p == 10 then 
 
-ply:ChatPrint( "Rolled: Instant Refill" )
+ply:ChatPrint( "Rolled: Ammo Bag" )
 
-sound.Play("refill_ping.wav", ply:GetPos())
+local ent = ents.Create("horde_ammo_bag")
+    local pos = ply:GetPos()
+    local dir = (ply:GetEyeTrace().HitPos - pos)
+    dir:Normalize()
+    local drop_pos = pos + dir * 50
+    drop_pos.z = pos.z + 15
+    ent:SetPos(drop_pos)
+    ent:SetAngles(Angle(0, ply:GetAngles().y, 0))
+    ply:Horde_AddDropEntity(ent:GetClass(), ent)
+    --ent:SetNWEntity("HordeOwner", ply)
+    ent:Spawn()
 
- for _, wpn in pairs(ply:GetWeapons()) do
-            local given = HORDE:GiveAmmo(ply, wpn, 1)
-            given_ammo = given_ammo or given
-        end
-		
-		if ((ply:GetActiveWeapon():GetMaxClip1() <= 0) or (ply:GetActiveWeapon():GetMaxClip2() <= 0)) then
-		 for _, wpn in pairs(ply:GetWeapons()) do
-            local given = HORDE:GiveAmmo(ply, wpn, 1)
-            given_ammo = given_ammo or given
-        end
-		end
-		
-		if ply:GetActiveWeapon():GetMaxClip1() > 0 then
-		ply:GetActiveWeapon():SetClip1(ply:GetActiveWeapon():GetMaxClip1())
-		end
-		
-		if ply:GetActiveWeapon():GetMaxClip2() > 0 then
-		ply:GetActiveWeapon():SetClip2(ply:GetActiveWeapon():GetMaxClip2())
-		end
+
 		
 	
 	elseif p == 11 then

@@ -17,8 +17,8 @@ GADGET.Hooks = {}
 if GetConVar("horde_enable_sandbox"):GetInt() == 0 and GetConVar("horde_enable_rank"):GetInt() == 1 then
 	hook.Add("Horde_OnEnemyKilled", "Horde_Embezzle", function(victim, killer, wpn)
 		if HORDE.current_wave <= 0 or GetConVar("sv_cheats"):GetInt() == 1 then return end
-		if killer:Horde_GetGadget() ~= "gadget_embezzle" then return end
 		if killer:IsPlayer() and killer:IsValid() and killer:Horde_GetClass() then
+				if killer:Horde_GetGadget() ~= "gadget_embezzle" then return end
 			local class_name = killer:Horde_GetCurrentSubclass()
 			if not (victim:GetVar("is_elite") or victim:GetVar("is_boss"))  then
 				local p = math.random()
@@ -37,9 +37,8 @@ if GetConVar("horde_enable_sandbox"):GetInt() == 0 and GetConVar("horde_enable_r
 		end
 		if victim:GetVar("is_boss") then
 				local p = math.random()
-				if p <= 1 then
 					-- Drop a skull token
-					local ent = ents.Create("horde_mega_skull_token")
+					local ent = ents.Create("horde_super_skull_token")
 					local pos = victim:GetPos()
 					local drop_pos = pos
 					drop_pos = drop_pos + VectorRand() * 5
@@ -47,7 +46,7 @@ if GetConVar("horde_enable_sandbox"):GetInt() == 0 and GetConVar("horde_enable_r
 					ent:SetPos(drop_pos)
 					ent.Owner = killer
 					ent:Spawn()
-				end
 			end
 	end)
 end
+
