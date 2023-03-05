@@ -78,7 +78,6 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
     ent:SetPos(drop_pos)
     ent:SetAngles(Angle(0, ply:GetAngles().y, 0))
     ply:Horde_AddDropEntity(ent:GetClass(), ent)
-    ent:SetNWEntity("HordeOwner", ply)
     ent:Spawn()
 	
 	
