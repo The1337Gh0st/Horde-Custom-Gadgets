@@ -29,20 +29,19 @@ end
 
 function ENT:Use( ply )
     local tab = self:GetTable()
-	local healinfo = HealInfo:New({amount=ply:GetMaxHealth(), healer=self:GetNWEntity("HordeOwner")})
 	
 	if ply:Health() >= ply:GetMaxHealth() then ply:EmitSound("items/suitchargeno1.wav") return end
 	
     if (tab[1] > 1) then
 	ply:EmitSound("items/medshot4.wav")
-        HORDE:OnPlayerHeal(ply, healinfo)
+        HORDE:SelfHeal(ply, ply:GetMaxHealth())
         tab[1] = tab[1] - 1
         x = 4-tab[1]
         s = tostring(x)
         self:SetBodyGroups(s)
     elseif (tab[1] == 1) then
 	ply:EmitSound("items/medshot4.wav")
-        HORDE:OnPlayerHeal(ply, healinfo)
+        HORDE:SelfHeal(ply, ply:GetMaxHealth())
         self:Remove()
     end
 end

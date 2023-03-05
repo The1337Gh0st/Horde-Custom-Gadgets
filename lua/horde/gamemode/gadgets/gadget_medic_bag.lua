@@ -1,5 +1,5 @@
 GADGET.PrintName = "Medic Bag"
-GADGET.Description = "Deploys a medic bag. Use to heal yourself to full health. \nCan be used 4 times before being used up. \nCannot be used if your current health is equal to or greater than your max health."
+GADGET.Description = "Deploys a medic bag. Use to heal yourself to full health. \nCan be used 4 times before being used up. \nCan be used by other players. \nCannot be used if your current health is equal to or greater than your max health."
 GADGET.Icon = "items/gadgets/turret_pack.png"
 GADGET.Duration = 30
 GADGET.Cooldown = 60
@@ -20,7 +20,6 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
     ent:SetPos(drop_pos)
     ent:SetAngles(Angle(0, ply:GetAngles().y, 0))
     ply:Horde_AddDropEntity(ent:GetClass(), ent)
-    ent:SetNWEntity("HordeOwner", ply)
     ent:Spawn()
 
 end
