@@ -6,7 +6,7 @@ GADGET.Description =
  Idol of Greed, Optical Camoflauge, Portable Battery,
  Ammo Bag, Berserker Armor, or Ultimate Shard.
  All temporary effects have been increased to 30 seconds.]]
-GADGET.Icon = "items/gadgets/unstable_injection.png"
+GADGET.Icon = "items/gadgets/dice.png"
 GADGET.Duration = 0
 GADGET.Cooldown = 30
 GADGET.Active = true
@@ -163,7 +163,7 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
 	elseif p == 9 then 
 	ply:ChatPrint( "Rolled: Portable Battery" )
 	
-	local battery = 15
+	local battery = 25
 	sound.Play("items/battery_pickup.wav", ply:GetPos())
   ply:SetArmor(math.min(ply:GetMaxArmor(), ply:Armor() + battery ))
 	
@@ -235,11 +235,6 @@ end
 
 GADGET.Hooks.Horde_OnPlayerDamage = function (ply, npc, bonus, hitgroup, dmginfo)
 
-if ply:Horde_GetGadget() ~= "gadget_dice" then return end
-    if dmginfo:GetInflictor():GetModel() == "models/props_c17/olidrum001_explosive.mdl" then
-        bonus.increase = bonus.increase + 10.0
-        dmginfo:SetDamageType(DMG_BURN)
-    end  
 
   if ply:Horde_GetGadget() ~= "gadget_dice" or not ply.Horde_HasGuts then return end
     bonus.increase = bonus.increase + 0.25

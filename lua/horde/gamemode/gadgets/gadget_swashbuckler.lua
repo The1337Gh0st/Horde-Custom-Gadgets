@@ -1,5 +1,5 @@
 GADGET.PrintName = "Swashbuckler"
-GADGET.Description = "Dealing non-ignite fire damage gives you a stack of Swashbuckler. \nEach stack increases melee damage by 50%. \nDealing melee damage resets all of your stacks. Maximum of 5 stacks."
+GADGET.Description = "Dealing non-ignite fire damage gives you a stack of Swashbuckler. \nEach stack increases melee damage by 100%. \nDealing melee damage resets all of your stacks. Maximum of 5 stacks."
 GADGET.Icon = "items/gadgets/berserk_armor.png"
 GADGET.Duration = 0
 GADGET.Cooldown = 0
@@ -80,7 +80,7 @@ hook.Add("Horde_OnPlayerDamage", "Horde_SwashbucklerDamage", function (ply, npc,
 	ply:Horde_AddSwashbucklerStack()
 	end
     if ply:Horde_GetSwashbucklerStack() > 0 and HORDE:IsMeleeDamage(dmginfo) then
-        bonus.increase = bonus.increase + ply:Horde_GetSwashbucklerStack() * 0.5
+        bonus.increase = bonus.increase + ply:Horde_GetSwashbucklerStack()
 		ply:Horde_ClearSwashbucklerStack()
 		sound.Play("horde/player/crit.ogg", ply:GetPos())
     end

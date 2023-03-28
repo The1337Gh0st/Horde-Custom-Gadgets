@@ -1,6 +1,6 @@
 GADGET.PrintName = "Resistance Shard"
 GADGET.Description = "20% increased global resist for 30 seconds."
-GADGET.Icon = "items/gadgets/agility_shard.png"
+GADGET.Icon = "items/gadgets/resistance_shard.png"
 GADGET.Droppable = true
 GADGET.Once = true
 GADGET.Cooldown = 0

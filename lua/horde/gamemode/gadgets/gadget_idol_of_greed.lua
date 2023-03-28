@@ -1,7 +1,7 @@
 GADGET.PrintName = "Idol of Greed"
-GADGET.Description = "Spend $500 cash to activate. \nWhile active, all of your kills will drop cash equal to 50 + 50% of the enemy's kill reward."
-GADGET.Icon = "items/gadgets/berserk_armor.png"
-GADGET.Duration = 15
+GADGET.Description = "Spend $500 cash to activate. \nWhile active, all of your kills will drop cash equal to $50 + 50% of the enemy's kill reward."
+GADGET.Icon = "items/gadgets/idol_of_greed.png"
+GADGET.Duration = 30
 GADGET.Cooldown = 30
 GADGET.Active = true
 GADGET.Params = {
@@ -24,7 +24,7 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
   --  ply:ScreenFade(SCREENFADE.IN, Color(253, 248, 50, 32), 0.1, 10)
   ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 1)
 	ply:Horde_SetGadgetCooldown(30)
-    timer.Simple(15, function()
+    timer.Simple(30, function()
         if ply:IsValid() then 
 		ply.Horde_GreedIdol = nil 
 		ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 0)
@@ -34,8 +34,6 @@ end
 
 GADGET.Hooks.Horde_OnNPCKilled = function(victim, killer, reward)
     if not killer.Horde_GreedIdol then return end
-    local p = math.random()
-    if p <= 1 then
         local money = ents.Create("horde_money")
         local pos = victim:GetPos()
         local drop_pos = pos
@@ -45,4 +43,4 @@ GADGET.Hooks.Horde_OnNPCKilled = function(victim, killer, reward)
         money:SetMoney(50 + (HORDE.kill_reward_base * 0.5))
         money:Spawn()
     end
-end
+	

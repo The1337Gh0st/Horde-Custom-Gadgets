@@ -1,6 +1,6 @@
 GADGET.PrintName = "Medic Bag"
 GADGET.Description = "Deploys a medic bag. Use to heal yourself to full health. \nCan be used 4 times before being used up. \nCan be used by other players. \nCannot be used if your current health is equal to or greater than your max health."
-GADGET.Icon = "items/gadgets/turret_pack.png"
+GADGET.Icon = "items/gadgets/medic_bag.png"
 GADGET.Duration = 30
 GADGET.Cooldown = 60
 GADGET.Active = true

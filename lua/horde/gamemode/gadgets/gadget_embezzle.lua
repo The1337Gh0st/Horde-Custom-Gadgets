@@ -2,11 +2,11 @@ GADGET.PrintName = "Embezzle"
 GADGET.Description =
 [["Cheat the economy with your wicked ways;
 it's not like they care how you get the money anyways."
-Killing non-elites has a 2% chance to drop a skull token.
+Killing non-elites has a 3% chance to drop a skull token.
 Killing bosses drops a Super Skull Token that awards skull tokens.
 Amount of skull tokens given depends on the difficulty,
 starting at 1 on Normal and capping at 5 on Apocalypse.]]
-GADGET.Icon = "items/gadgets/corporate_mindset.png"
+GADGET.Icon = "items/gadgets/embezzle.png"
 GADGET.Duration = 0
 GADGET.Cooldown = 0
 GADGET.Active = false
@@ -22,7 +22,7 @@ if GetConVar("horde_enable_sandbox"):GetInt() == 0 and GetConVar("horde_enable_r
 			local class_name = killer:Horde_GetCurrentSubclass()
 			if not (victim:GetVar("is_elite") or victim:GetVar("is_boss"))  then
 				local p = math.random()
-				if p <= 0.02 then
+				if p <= 0.03 then
 					-- Drop a skull token
 					local ent = ents.Create("horde_skull_token")
 					local pos = victim:GetPos()

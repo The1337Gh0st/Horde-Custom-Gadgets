@@ -1,8 +1,9 @@
 GADGET.PrintName = "Unyielding"
 GADGET.Description =
-[[Caps damage received to 50% of your max health,
-but you will also be inflicted with Decay whenever this triggers.]]
-GADGET.Icon = "items/gadgets/transcendance.png"
+[[Caps damage received to 10 + 50% of your current health,
+but 100% of damage received builds up Decay. 
+Amount of Decay received is calculated before the damage cap.]]
+GADGET.Icon = "items/gadgets/unyielding.png"
 GADGET.Duration = 0
 GADGET.Cooldown = 0
 GADGET.Active = false
@@ -12,9 +13,9 @@ GADGET.Hooks = {}
 
 GADGET.Hooks.Horde_OnPlayerDamageTakenPost = function (ply, dmginfo, bonus)
     if ply:Horde_GetGadget() ~= "gadget_unyielding"  then return end
-	local maxhealth = ply:GetMaxHealth() * 0.5
+		ply:Horde_AddDebuffBuildup(HORDE.Status_Decay, dmginfo:GetDamage(), dmginfo:GetAttacker())
+	local maxhealth = ((ply:Health() * 0.5) + 10)
 	if dmginfo:GetDamage() >= maxhealth then
-    ply:Horde_AddDebuffBuildup(HORDE.Status_Decay, 100, dmginfo:GetAttacker())
     dmginfo:SetDamage(maxhealth)
 	end
 end

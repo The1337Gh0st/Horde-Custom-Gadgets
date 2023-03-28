@@ -1,6 +1,6 @@
 GADGET.PrintName = "Ultimate Shard"
 GADGET.Description = "10% increase in speed, damage, and global resist for 30 seconds. \nAdditionally, heals for 20 health and removes all debuffs."
-GADGET.Icon = "items/gadgets/damage_shard.png"
+GADGET.Icon = "items/gadgets/ultimate_shard.png"
 GADGET.Droppable = true
 GADGET.Once = true
 GADGET.Cooldown = 0
@@ -50,3 +50,5 @@ GADGET.Hooks.Horde_PlayerMoveBonus = function(ply, bonus_walk, bonus_run)
         bonus_run.increase = bonus_run.increase + 0.1
     end
 end
+
+--HORDE:RegisterStatus("Ultimate_Shard", "materials/items/gadgets/ultimate_shard.png")

@@ -1,6 +1,6 @@
 GADGET.PrintName = "Mutagen"
 GADGET.Description = "Upon activation, your damage is converted into a random type for 10 seconds. \nDamage types will also build up their respective status effects."
-GADGET.Icon = "items/gadgets/hellfire_tincture.png"
+GADGET.Icon = "items/gadgets/mutagen.png"
 GADGET.Duration = 10
 GADGET.Cooldown = 20
 GADGET.Active = true

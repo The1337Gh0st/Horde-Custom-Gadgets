@@ -1,6 +1,6 @@
 GADGET.PrintName = "Ammo Bag"
 GADGET.Description = "Deploys an ammo bag. Use to gain ammo for all of your weapons. \nCan be used 6 times before being used up. \nCan be used by other players."
-GADGET.Icon = "items/gadgets/butane_can.png"
+GADGET.Icon = "items/gadgets/ammo_bag.png"
 GADGET.Duration = 30
 GADGET.Cooldown = 30
 GADGET.Active = true

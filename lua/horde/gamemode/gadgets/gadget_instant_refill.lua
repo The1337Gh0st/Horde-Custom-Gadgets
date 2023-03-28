@@ -1,6 +1,6 @@
 GADGET.PrintName = "Instant Refill"
 GADGET.Description = "Instantly reloads your current weapon and gives you ammo for all of your weapons. \nIf the weapon you're currently holding can't reload, \nthen an additional amount of ammo will be given instead."
-GADGET.Icon = "items/gadgets/agility_shard.png"
+GADGET.Icon = "items/gadgets/instant_refill.png"
 GADGET.Droppable = true
 GADGET.Once = true
 GADGET.Cooldown = 0
