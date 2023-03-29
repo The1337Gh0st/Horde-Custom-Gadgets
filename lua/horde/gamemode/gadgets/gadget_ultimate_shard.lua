@@ -13,7 +13,7 @@ GADGET.Hooks = {}
 GADGET.Hooks.Horde_UseActiveGadget = function (ply)
     if ply:Horde_GetGadget() ~= "gadget_ultimate_shard" then return end
     ply.Horde_Has_Ultimate_Shard = true
-    ply:Horde_SyncStatus(HORDE.Status_Damage_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Ultimate_Shard, 1)
 	
 	sound.Play("items/medshot4.wav", ply:GetPos())
     local healinfo = HealInfo:New({amount=20, healer=ply})
@@ -27,7 +27,7 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
     timer.Simple(30, function ()
         if ply:IsValid() then
             ply.Horde_Has_Ultimate_Shard = nil
-            ply:Horde_SyncStatus(HORDE.Status_Damage_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Ultimate_Shard, 0)
         end
     end)
 end

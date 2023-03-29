@@ -22,12 +22,12 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
 	sound.Play("satan_laugh.wav", ply:GetPos())
     ply.Horde_GreedIdol = true
   --  ply:ScreenFade(SCREENFADE.IN, Color(253, 248, 50, 32), 0.1, 10)
-  ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 1)
+  ply:Horde_SyncStatus(HORDE.Status_Idol_Of_Greed, 1)
 	ply:Horde_SetGadgetCooldown(30)
     timer.Simple(30, function()
         if ply:IsValid() then 
 		ply.Horde_GreedIdol = nil 
-		ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 0)
+		ply:Horde_SyncStatus(HORDE.Status_Idol_Of_Greed, 0)
 		end
     end)
 end

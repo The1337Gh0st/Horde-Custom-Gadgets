@@ -28,7 +28,7 @@ function plymeta:Horde_AddSwashbucklerStack()
      --   self:Horde_RemoveSwashbucklerStack()
    -- end)
 net.Start("Horde_SyncStatus")
-        net.WriteUInt(HORDE.Status_Phalanx, 8)
+        net.WriteUInt(HORDE.Status_Swashbuckler, 8)
         net.WriteUInt(self.Horde_SwashbucklerStack, 8)
     net.Send(self)
 end
@@ -38,7 +38,7 @@ function plymeta:Horde_RemoveSwashbucklerStack()
     if self.Horde_SwashbucklerStack == 0 then return end
     self.Horde_SwashbucklerStack = math.max(0, self.Horde_SwashbucklerStack - 1)
 net.Start("Horde_SyncStatus")
-        net.WriteUInt(HORDE.Status_Phalanx, 8)
+        net.WriteUInt(HORDE.Status_Swashbuckler, 8)
         net.WriteUInt(self.Horde_SwashbucklerStack, 8)
     net.Send(self)
 end
@@ -60,7 +60,7 @@ function plymeta:Horde_ClearSwashbucklerStack()
     self.Horde_SwashbucklerStack = 0
 	--timer.Remove("Horde_SwashbucklerTracker")
 	net.Start("Horde_SyncStatus")
-        net.WriteUInt(HORDE.Status_Phalanx, 8)
+        net.WriteUInt(HORDE.Status_Swashbuckler, 8)
         net.WriteUInt(self.Horde_SwashbucklerStack, 8)
     net.Send(self)
 end

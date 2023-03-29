@@ -25,11 +25,11 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
 	ply:ChatPrint( "Mutagen: Ballistic" )
 	
 	  ply.Horde_Mutagen_Ballistic = true
-    ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Mutagen_Ballistic, 1)
     timer.Simple(10, function ()
         if ply:IsValid() then
             ply.Horde_Mutagen_Ballistic = nil
-            ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Mutagen_Ballistic, 0)
         end
     end)
 	
@@ -38,11 +38,11 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
 ply:ChatPrint( "Mutagen: Slash" )
 
 ply.Horde_Mutagen_Melee = true
-    ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Mutagen_Slash, 1)
     timer.Simple(10, function ()
         if ply:IsValid() then
             ply.Horde_Mutagen_Melee = nil
-            ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Mutagen_Slash, 0)
         end
     end)
 
@@ -51,13 +51,13 @@ elseif p == 3 then
 ply:ChatPrint( "Mutagen: Fire" )
 
 ply.Horde_Mutagen_Fire = true
-    ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Mutagen_Fire, 1)
 	ply:Horde_SetApplyIgniteChance(ply:Horde_GetApplyIgniteChance() + 1)
     timer.Simple(10, function ()
         if ply:IsValid() then
             ply.Horde_Mutagen_Fire = nil
 			ply:Horde_SetApplyIgniteChance(ply:Horde_GetApplyIgniteChance() - 1)
-            ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Mutagen_Fire, 0)
         end
     end)
 
@@ -66,11 +66,11 @@ elseif p == 4 then
 ply:ChatPrint( "Mutagen: Cold" )
 
 ply.Horde_Mutagen_Cold = true
-    ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Mutagen_Cold, 1)
     timer.Simple(10, function ()
         if ply:IsValid() then
             ply.Horde_Mutagen_Cold = nil
-            ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Mutagen_Cold, 0)
         end
     end)
 
@@ -79,11 +79,11 @@ elseif p == 5 then
 ply:ChatPrint( "Mutagen: Lightning" )
 
 ply.Horde_Mutagen_Lightning = true
-    ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Mutagen_Electric, 1)
     timer.Simple(10, function ()
         if ply:IsValid() then
             ply.Horde_Mutagen_Lightning = nil
-            ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Mutagen_Electric, 0)
         end
     end)
 
@@ -92,11 +92,11 @@ elseif p == 6 then
 ply:ChatPrint( "Mutagen: Poison" )
 
 ply.Horde_Mutagen_Poison = true
-    ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Mutagen_Poison, 1)
     timer.Simple(10, function ()
         if ply:IsValid() then
             ply.Horde_Mutagen_Poison = nil
-            ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Mutagen_Poison, 0)
         end
     end)
 
@@ -105,11 +105,11 @@ elseif p == 7 then
 ply:ChatPrint( "Mutagen: Blast" )
 
 ply.Horde_Mutagen_Blast = true
-    ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Mutagen_Blast, 1)
     timer.Simple(10, function ()
         if ply:IsValid() then
             ply.Horde_Mutagen_Blast = nil
-            ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Mutagen_Blast, 0)
         end
     end)
 

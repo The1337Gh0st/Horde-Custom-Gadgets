@@ -36,11 +36,11 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
 	elseif p == 2 then
 	ply:ChatPrint( "Rolled: Resistance Shard" )
 	ply.Horde_Has_Resistance_Shard = true
-    ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Resist_Shard, 1)
     timer.Simple(30, function ()
         if ply:IsValid() then
             ply.Horde_Has_Resistance_Shard = nil
-            ply:Horde_SyncStatus(HORDE.Status_Agility_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Resist_Shard, 0)
         end
     end)
 	
@@ -140,11 +140,11 @@ GADGET.Hooks.Horde_UseActiveGadget = function (ply)
 	sound.Play("satan_laugh.wav", ply:GetPos())
     ply.Horde_GreedIdol = true
   --  ply:ScreenFade(SCREENFADE.IN, Color(253, 248, 50, 32), 0.1, 30)
-  ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 1)
+  ply:Horde_SyncStatus(HORDE.Status_Idol_Of_Greed, 1)
     timer.Simple(30, function()
         if ply:IsValid() then 
 		ply.Horde_GreedIdol = nil 
-		ply:Horde_SyncStatus(HORDE.Status_Assassin_Optics, 0)
+		ply:Horde_SyncStatus(HORDE.Status_Idol_Of_Greed, 0)
 		end
     end)
 	
@@ -200,7 +200,7 @@ local ent = ents.Create("horde_ammo_bag")
 	
 	ply:ChatPrint( "Rolled: Ultimate Shard" )
 	 ply.Horde_Has_Ultimate_Shard = true
-    ply:Horde_SyncStatus(HORDE.Status_Damage_Shard, 1)
+    ply:Horde_SyncStatus(HORDE.Status_Ultimate_Shard, 1)
 	
 	sound.Play("items/medshot4.wav", ply:GetPos())
     local healinfo = HealInfo:New({amount=20, healer=ply})
@@ -214,7 +214,7 @@ local ent = ents.Create("horde_ammo_bag")
     timer.Simple(30, function ()
         if ply:IsValid() then
             ply.Horde_Has_Ultimate_Shard = nil
-            ply:Horde_SyncStatus(HORDE.Status_Damage_Shard, 0)
+            ply:Horde_SyncStatus(HORDE.Status_Ultimate_Shard, 0)
         end
     end)
 	end
