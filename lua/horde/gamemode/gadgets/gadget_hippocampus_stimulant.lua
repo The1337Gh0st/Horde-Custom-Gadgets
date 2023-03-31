@@ -21,24 +21,25 @@ if GetConVar("horde_enable_sandbox"):GetInt() == 0 and GetConVar("horde_enable_r
 			if killer:Horde_GetLevel(class_name) >= HORDE.max_level then return end
 			if victim:GetVar("is_elite") then
 				killer:Horde_SetExp(class_name, killer:Horde_GetExp(class_name) + 1)
-			else
+			end
 			if victim:GetVar("is_boss") then
 				killer:Horde_SetExp(class_name, killer:Horde_GetExp(class_name) + 1)
-			else
+			end
 				killer:Horde_SetExp(class_name, killer:Horde_GetExp(class_name) + 1)
 				HORDE:SaveRank(killer)
 			end
-		end
-        end
-	end)
-end
+      end)
+  end
+
 
 GADGET.Hooks.Horde_OnPlayerHeal = function(ply, healinfo)
 local healer = healinfo:GetHealer()
+	if GetConVar("horde_enable_sandbox"):GetInt() == 0 and GetConVar("horde_enable_rank"):GetInt() == 1 then
     if healer:IsPlayer() and healer:Horde_GetGadget() == "gadget_hippocampus_stimulant" then
 	if healer:Horde_GetLevel(class_name) >= HORDE.max_level then return end
 	local class_name = healer:Horde_GetClass().name
 		healer:Horde_SetExp(class_name, healer:Horde_GetExp(class_name) + 1)
 		HORDE:SaveRank(healer)
     end
+	end
 end
