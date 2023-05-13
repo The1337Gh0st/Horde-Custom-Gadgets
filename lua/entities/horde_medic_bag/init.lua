@@ -34,7 +34,7 @@ function ENT:Use( ply )
 	
     if (tab[1] > 1) then
 	ply:EmitSound("items/medshot4.wav")
-        HORDE:SelfHeal(ply, ply:GetMaxHealth())
+        HORDE:SelfHeal(ply, ply:GetMaxHealth() )
         tab[1] = tab[1] - 1
         x = 4-tab[1]
         s = tostring(x)

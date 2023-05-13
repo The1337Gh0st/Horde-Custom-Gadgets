@@ -34,53 +34,20 @@ function ENT:Use( ply )
 	local given_ammo = false
 	
 	if not self.Removing and ply:Alive() and not ply:IsBot() then
-	if tab[1] == 6 then
-        for _, wpn in pairs(ply:GetWeapons()) do
-            local given = HORDE:GiveAmmo(ply, wpn, 1)
-            given_ammo = given_ammo or given
-        end
-            self:SetModel( "models/props/g_ammo_bag_5.mdl" ) //change model
-            self:PhysicsInit(SOLID_VPHYSICS) //re-init physics model
-            tab[1] = tab[1] - 1 //reduce charges by 1
-	elseif tab[1] == 5 then
-        for _, wpn in pairs(ply:GetWeapons()) do
-            local given = HORDE:GiveAmmo(ply, wpn, 1)
-            given_ammo = given_ammo or given
-        end
-            self:SetModel( "models/props/g_ammo_bag_4.mdl" ) //change model
-            self:PhysicsInit(SOLID_VPHYSICS) //re-init physics model
-            tab[1] = tab[1] - 1 //reduce charges by 1
-    elseif tab[1] == 4 then
-        for _, wpn in pairs(ply:GetWeapons()) do
-            local given = HORDE:GiveAmmo(ply, wpn, 1)
-            given_ammo = given_ammo or given
-        end
-            self:SetModel( "models/props/g_ammo_bag_3.mdl" ) //change model
-            self:PhysicsInit(SOLID_VPHYSICS) //re-init physics model
-            tab[1] = tab[1] - 1 //reduce charges by 1
-    elseif tab[1] == 3 then
-        for _, wpn in pairs(ply:GetWeapons()) do
-            local given = HORDE:GiveAmmo(ply, wpn, 1)
-            given_ammo = given_ammo or given
-        end
-            self:SetModel( "models/props/g_ammo_bag_2.mdl" )
-            self:PhysicsInit(SOLID_VPHYSICS)
-            tab[1] = tab[1] - 1
-    elseif tab[1] == 2 then
-        for _, wpn in pairs(ply:GetWeapons()) do
-            local given = HORDE:GiveAmmo(ply, wpn, 1)
-            given_ammo = given_ammo or given
-        end
-            self:SetModel( "models/props/g_ammo_bag_1.mdl" )
-            self:PhysicsInit(SOLID_VPHYSICS)
-            tab[1] = tab[1] - 1
-    elseif tab[1] == 1 then
+
 	for _, wpn in pairs(ply:GetWeapons()) do
-            local given = HORDE:GiveAmmo(ply, wpn, 1)
+            if wpn.Primary and wpn.Primary.MaxAmmo and wpn.Primary.MaxAmmo <= ply:GetAmmoCount(wpn:GetPrimaryAmmoType()) then
+                goto cont
+            end
+            local given = HORDE:GiveAmmo(ply, wpn, 6)
             given_ammo = given_ammo or given
+            ::cont::
         end
-		self.Removing = true
+
+        if given_ammo then
+            self.Removing = true
             self:Remove()
-    end
+        end
 end
 end
+
